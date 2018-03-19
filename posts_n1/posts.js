@@ -49,13 +49,9 @@ async function isContainUser(idOfUser) {
 function postPage(idOfPost) {
   fetch(url).then(response => response.json()).then((data) => {
     const post = data[idOfPost - 1] || {};
-    const {
-      title,
-      body,
-      userId
-    } = post;
-    output = `<h3> Title: <br> ${title}  </h3>
-          <h4> Post: <br> ${body} </h4>
+    const { title, body, userId} = post;
+    output = `<h2> Title: <br> ${title}  </h2>
+          <h3> Post: <br> ${body} </h3>
           <h3 onClick="userOnClick(${userId})" id="userID=${userId}">User: ${userId}</h3>
           `;
     ul.innerHTML = output;
@@ -66,10 +62,8 @@ function postPage(idOfPost) {
 function postList() {
   fetch(url).then(response => response.json()).then((data) => {
     data.forEach((post) => {
-      const {
-        id
-      } = post;
-      output += `<div><p id="postID=${id}">Post #${id}</p></div>`;
+      const { id, title } = post;
+      output += `<div><p id="postID=${id}">Post #${id} <br> ${title}</p></div>`;
       ul.innerHTML = output;
     });
     postOnClick();
@@ -79,9 +73,7 @@ function postList() {
 function postOnClick() {
   fetch(url).then(response => response.json()).then((data) => {
     data.forEach((post) => {
-      const {
-        id
-      } = post;
+      const { id } = post;
       document.getElementById("postID=" + id).onclick = function() {
         location.href = "?postID=" + id;
       };
@@ -92,15 +84,11 @@ function postOnClick() {
 function getComments(idOfPost) {
   fetch(commentUrl).then(response => response.json()).then((data) => {
     data.forEach((comment) => {
-      const {
-        body,
-        name,
-        email
-      } = comment;
+      const { body, name, email } = comment;
       if (comment.postId == idOfPost) {
-        output += `<p> Comment: ${body}</h3>
-                   <h6> Name: ${name} </h6>
-                   <h6> Email: ${email}</h6>
+        output += `<h4> Comment: ${body}</h4>
+                   <p> Name: ${name} </p>
+                   <p> Email: ${email}</p>
                   `;
         ul.innerHTML = output;
       }
@@ -115,14 +103,7 @@ function userOnClick(userID) {
 function getUser(userID) {
   fetch(userUrl).then(response => response.json()).then((users) => {
     const user = users[userID - 1];
-    const {
-      name,
-      username,
-      email,
-      address: {
-        street
-      }
-    } = user;
+    const { name, username, email, address: {street}} = user;
     output = `<h4> Name: ${name}  </h4>
                   <h4> User Name: ${username}  </h4>
                   <h4> Email: ${email}  </h4>
