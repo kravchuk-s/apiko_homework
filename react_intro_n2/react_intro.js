@@ -1,47 +1,77 @@
  const React = {
-
-  createElement(tag, style, input) {
-    let output = '';
-    let inputOne = '';
-
-    if (Array.isArray(input)){
-        input.forEach((element) => {          
-          inputOne += element;
-        }
-          );
-      
-    } else {
-        inputOne = input;
-    }
-
-    switch(tag) {
-      case 'div':
-      output = `<div>${inputOne}</div>`
-      break;
-      case 'br':
-      output = `<br>`;
-      break;
+  createElement(tag, attrb, input) {
+     console.log("step 1");
+    let out;
+    switch (tag) {
       case 'span':
-      output = `<span>${inputOne}</span>`;
-      break;
+      case 'div':
+        out = document.createElement(tag);
+        console.log("step 2");
+        if (Array.isArray(input)) {
+          input.forEach((element) => {
+            console.log("step 3 " + element);
+            if(!(element.nodeType)){
+              out.innerHTML += element;
+            } else {
+              console.log("step 4");
+              out.appendChild(element);
+            }
+            
+          })
+        } else {
+          out.textContent = input;
+        }
+        break;
+      case 'br':
+        out = document.createElement(tag);
+        console.log("step 5");
+        break;
       default:
-      output = tag;
+      console.log("step 6");
+        out.textContent = tag;
     }
-   
-    return output;
+
+    function attributes() {
+      const keys = Object.keys(attrb);
+      switch (keys[0]) {
+        case 'style':
+          for (key in attrb.style) {
+            out.style[key] = attrb.style[key];
+          }
+          break;
+        case 'textContent':
+          out.textContent = attrb.textContent;
+          break;
+      }
+    }
+    if (!(attrb === undefined)) {
+      attributes();
+    }
+    return out;
   },
   render(app, element) {
-    element.innerHTML = app;
+    element.appendChild(app);
   }
  }
-
-const kol = React.createElement('div', undefined,
- [React.createElement('br'), React.createElement('span',undefined,'some text')]);
+// const kol = React.createElement('span',undefined,'some text');
+// const kol = React.createElement('span', { style: { backgroundColor: 'red' } },'some text');
+// const kol = React.createElement('div',undefined,
+ // [React.createElement('br'), React.createElement('span', undefined, 'some text')]);
+// const kol = React.createElement('span',undefined,'some text');
+// const kol = React.createElement('br');
 
  // const app = React.createElement('div', {  style: {    backgroundColor: 'red'  } },
  //  [React.createElement('some text'), React.createElement('some text')]);
 
- React.render(kol, document.getElementById('root'), );
+const app = 
+  React.createElement('div', { style: { backgroundColor: 'red' } }, [
+    React.createElement('span', undefined, 'Hello world'),
+    React.createElement('br'),
+    'This is just a text node',
+    React.createElement('div', { textContent: 'Text content' }),
+  ]);
+
+ React.render(app, document.getElementById('root'), );
 
 
 
