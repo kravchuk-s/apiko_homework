@@ -1,21 +1,21 @@
  const React = {
-    createElement(tag, attrb, input) {
-      let out;
-      if (!(/\s/.test(tag))) {
-       out = document.createElement(tag);
-        if (Array.isArray(input)) {
-          input.forEach((element) => {
-            if (!(element.nodeType)) {
-              out.innerHTML += element;
-            } else {
-              out.appendChild(element);
-            }
-          })
-        } else if (typeof input === 'string') {
-          out.textContent = input;
-        }
-
-        if (typeof attrb === 'object') {
+  createElement(tag, attrb, input) {
+    if (typeof tag === 'string' && !(/\s/.test(tag))) {
+      let out = document.createElement(tag);
+      //tag and input
+      if (Array.isArray(input)) {
+        input.forEach((element) => {
+          if (element.nodeType) {
+            out.appendChild(element);
+          } else {
+            out.innerHTML += element;
+          }
+        })
+      } else if (typeof input === 'string') {
+        out.textContent = input;
+      }
+      //attributes
+      if (typeof attrb === 'object') {
         const keys = Object.keys(attrb);
         for (key in attrb) {
           if (keys == 'style') {
@@ -27,14 +27,16 @@
           }
         }
       }
-      }
-      
       return out;
-    },
-    render(app, element) {
+    }
+  },
+  render(app, element) {
+    if (typeof app !== 'undefined' && typeof element !== 'undefined'
+     && app.nodeType && element.nodeType) {
       element.appendChild(app);
     }
-   }
+  }
+ }
 
 const app = 
   React.createElement('div', { style: { backgroundColor: 'red' } }, [
