@@ -1,10 +1,7 @@
 import React from 'react';
-import data from '../data.js';
-
 
 function PostListItem(props) {
-
-    const {userId, id, title, body} = data[props.index];
+    const {userId, id, title, body} = props.postToShow;
     return(
         <li>
             <p>UserID: {userId} || ID of Post: {id}</p>
