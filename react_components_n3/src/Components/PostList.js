@@ -1,17 +1,20 @@
 import React from 'react';
 import PostListItem from './PostListItem';
+import MoreButton from './MoreButton';
 
 function PostList(props){
-    let rows = [];
-    for (let i = 0; i < 10; i++) {
-        rows.push(<PostListItem index={i}/>);
+    let postIndex = 0;
+    let posts = [];
+    if (typeof props.index !== 'undefined'){
+        postIndex += props.index;
+    }
+    for (let i = 0; i < postIndex; i++) {
+        posts.push(<PostListItem index={i}/>);
     }
     return(
-
-        <ul>{rows}</ul>
+        <ul>{posts}</ul>
 
     );
-
 }
 
 export default PostList;

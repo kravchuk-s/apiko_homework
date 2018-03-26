@@ -3,7 +3,7 @@ import data from '../data.js';
 
 
 function PostListItem(props) {
-    console.log(props.index);
+
     const {userId, id, title, body} = data[props.index];
     return(
         <li>
