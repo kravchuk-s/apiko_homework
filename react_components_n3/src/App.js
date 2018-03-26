@@ -6,21 +6,25 @@ import PostList from './Components/PostList';
 import MoreButton from './Components/MoreButton';
 
 class App extends Component {
-
     constructor(props) {
         super(props)
         this.handler = this.handler.bind(this)
-        this.state = {countPosts: 10}
+        this.state = {countPosts: 10, displayBtn: 'inline-block'}
     }
 
     handler(e) {
         e.preventDefault()
-        this.setState({
-            countPosts: this.state.countPosts+=10
-        })
+        if(this.state.countPosts < 100) {
+            this.setState({
+                countPosts: this.state.countPosts += 10
+            })
+        }
     }
+
+
+
   render() {
-      console.log(this.countPosts);
+
     return (
         <div className="mainContainer">
             <PostList index={this.state.countPosts} />
