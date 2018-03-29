@@ -36,7 +36,6 @@ class App extends Component {
 
     handleChange(e){
         e.preventDefault();
-
         const filteredPosts = data.filter(
             (post) => {
                 if(post.title.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1)
