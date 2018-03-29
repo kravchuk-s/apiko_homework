@@ -11,17 +11,23 @@ class App extends Component {
         super(props);
         this.handler = this.handler.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.state = {countPosts: 10, btnDisabled: false, search: ''}
+        this.state = {countPosts: data.length,  //quantity of posts in array
+            countPostsToShow: 10,               //quantity of posts to show on page
+            btnHidden: false,                   //show or hide button
+            search: '',                         //string in search field
+            postsShowed: data.slice(0, 10),     //displayed posts on page
+            filteredPosts: data}                //all posts or posts that was filtered
     }
 
     handler(e) {
         e.preventDefault();
-        if(this.state.countPosts < 100) {
+        if(this.state.countPostsToShow < this.state.countPosts) {
             this.setState({
-                countPosts: this.state.countPosts + 10
-            })
-        }
-        if(this.state.countPosts >= 100){
+                countPostsToShow: this.state.countPostsToShow + 10, btnHidden: false,
+                postsShowed: this.state.filteredPosts.slice(0, this.state.countPostsToShow + 10)
+            });
+
+        } else if(this.state.countPostsToShow >= this.state.countPosts){
             this.setState({
                 btnHidden: true
             })
@@ -30,25 +36,28 @@ class App extends Component {
 
     handleChange(e){
         e.preventDefault();
-        this.setState({search: e.target.value});
+        const filteredPosts = data.filter(
+            (post) => {
+                if(post.title.indexOf(e.target.value) > -1)
+                    return post;
+            }
+        );
+        const countPostsToShow = filteredPosts.length > 10 ? 10 : filteredPosts.length;
+        const postsToShow = filteredPosts.slice(0, countPostsToShow);
+
+        this.setState({search: e.target.value, postsShowed: postsToShow,
+            countPosts: filteredPosts.length, btnHidden: false,
+            countPostsToShow: countPostsToShow, filteredPosts: filteredPosts});
     }
 
 
-
   render() {
-        const filteredPosts = data.filter(
-            (post) => {
-                if(post.title.indexOf(this.state.search) > -1)
-                return post;
-            }
-        );
-        const postsToShow = filteredPosts.slice(0, this.state.countPosts);
     return (
         <div className="mainContainer">
             <SearchForm value={this.state.search} change={this.handleChange}/>
-            <CountOfPosts count={this.state.countPosts}/>
-            <PostList postsArr={postsToShow} />
-            <MoreButton handler = {this.handler} hidden={this.state.handleChange} />
+            <CountOfPosts count={this.state.countPostsToShow}/>
+            <PostList postsArr={this.state.postsShowed} />
+            <MoreButton handler = {this.handler} hidden={this.state.btnHidden} />
         </div>
     );
   }
