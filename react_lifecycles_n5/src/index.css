@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.mainContainer {
+  margin: auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+li {
+  font-size: 14px;
+  list-style: none;
+  border: 1px solid #ddd;
+  padding: 12px;
+  background-color: #f6f6f6;
+}
+
+li:hover {
+  background-color: #eee;
+}
+
+ul {
+  padding-left: 0;
+}
+
+.moreButton {
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #222222;
+}
+
+input {
+  margin-top: 10px;
+  padding: 5px 5px 0px 5px;
+  color: #222222;
+  background: white;
+  border-color: #222222;
+  border-radius: 3px;
+  width: 100%;
+  font-size: 18px;
+}
+
+
