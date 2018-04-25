@@ -15,7 +15,7 @@ class App extends Component {
         this.handlerClick = this.handlerClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.state = {countPosts: 0,            //quantity of posts in array
-            countPostsToShow: 0,               //quantity of posts to show on page
+            countPostsToShow: 0,                //quantity of posts to show on page
             btnHidden: false,                   //show or hide button
             search: '',                         //string in search field
             postsShowed: [],                    //displayed posts on page
