@@ -1,13 +1,14 @@
 import { createDrawerNavigator } from 'react-navigation';
 import HomeNavigator from './HomeNavigator';
 import HomeScreen from '../screens/HomeScreen/HomeScreenView';
-import AboutUs from '../screens/AboutUsScreen/AboutUsScreenView';
+import AboutUs from './AboutUsNavigator';
 import TermsAndConditions from '../screens/TermsAndConditionsScreen/TermsAndConditionScreenView';
 import SignUp from '../screens/SignUpScreen/SignUpScreenView';
 import SignUpNavigator from './SignUpNavigator';
+import SignedOutDrawer from './Drawers/SignedOutDrawer';
 
 
-const DrawerSignedOut = createDrawerNavigator({
+const SignedOutNavigator = createDrawerNavigator({
     Home: {
       screen: HomeNavigator
     },
@@ -20,6 +21,8 @@ const DrawerSignedOut = createDrawerNavigator({
     SignUp: {
         screen: SignUpNavigator
     }
-  });
+  },{
+    contentComponent: SignedOutDrawer
+});
 
-  export default DrawerSignedOut;
+  export default SignedOutNavigator;

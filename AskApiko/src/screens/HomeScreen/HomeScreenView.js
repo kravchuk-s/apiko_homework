@@ -4,6 +4,13 @@ import { View, Text, TouchableHighlight } from 'react-native';
 import styles from './styles';
 
 class HomeScreen extends React.Component {
+  
+  static navigationOptions = ({ navigation }) => {
+    return{
+      title: 'Home',     
+    }    
+  };
+
   render() {
     return (
       <View style={styles.container}>

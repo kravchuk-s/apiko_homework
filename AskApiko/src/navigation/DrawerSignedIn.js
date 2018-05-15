@@ -5,7 +5,7 @@ import AboutUs from '../screens/AboutUsScreen/AboutUsScreenView';
 import TermsAndConditions from '../screens/TermsAndConditionsScreen/TermsAndConditionScreenView';
 import CreateQuestion from '../screens/CreateQuestionScreen/CreateQuestionScreenView';
 import Search from '../screens/SearchScreen/SearchScreenView';
-import DrawerSignedOut from './DrawerSignedOut';
+import SignedOutNavigator from './SignedOutNavigator';
 
 const DrawerSignedIn = createDrawerNavigator({
     Home: {
@@ -27,7 +27,7 @@ const DrawerSignedIn = createDrawerNavigator({
           screen: TermsAndConditions
       },
       SignOut: {
-          screen: DrawerSignedOut
+          screen: SignedOutNavigator
       }    
   });
 
