@@ -1,7 +1,11 @@
 import React from 'react';
-import { WebView } from 'react-native';
+import { WebView, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 class TermsAndConditions extends React.Component {
+  static navigationOptions = {
+    title: 'Terms & Conditions',    
+  }
   render() {
     return (      
         <WebView

@@ -6,20 +6,59 @@ import TermsAndConditions from '../screens/TermsAndConditionsScreen/TermsAndCond
 import SignUp from '../screens/SignUpScreen/SignUpScreenView';
 import SignUpNavigator from './SignUpNavigator';
 import SignedOutDrawer from './Drawers/SignedOutDrawer';
+import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
 
 
 const SignedOutNavigator = createDrawerNavigator({
     Home: {
-      screen: HomeNavigator
+      screen: HomeNavigator,
+      navigationOptions: ({ navigation }) => ({
+        drawerIcon: (
+            <Ionicons
+            color={navigation.isFocused() ? '#ffffff':'#000000'}
+            size={28}
+            name="md-home"
+            />
+          )
+      }),
     },
     AboutUs: {
-        screen: AboutUs
+        screen: AboutUs,
+        navigationOptions: ({ navigation }) => ({
+            drawerIcon: (
+                <Ionicons
+                color={navigation.isFocused() ? '#ffffff':'#000000'}
+                size={28}
+                name="md-information-circle"
+                />
+              )
+          }),
+        
     },
     TermsAndConditions: {
-        screen: TermsAndConditions
+        screen: TermsAndConditions,
+        navigationOptions: ({ navigation }) => ({
+            drawerIcon: (
+                <Ionicons
+                color={navigation.isFocused() ? '#ffffff':'#000000'}
+                size={28}
+                name="md-document"
+                />
+              )
+          }),
     },
     SignUp: {
-        screen: SignUpNavigator
+        screen: SignUpNavigator,
+        navigationOptions: ({ navigation }) => ({
+            drawerIcon: (
+                <Ionicons
+                color={navigation.isFocused() ? '#ffffff':'#000000'}
+                size={28}
+                name="md-log-in"
+                />
+              )
+          }),
     }
   },{
     contentComponent: SignedOutDrawer

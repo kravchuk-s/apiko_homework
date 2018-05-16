@@ -6,6 +6,7 @@ import TermsAndConditions from '../screens/TermsAndConditionsScreen/TermsAndCond
 import CreateQuestion from '../screens/CreateQuestionScreen/CreateQuestionScreenView';
 import Search from '../screens/SearchScreen/SearchScreenView';
 import SignedOutNavigator from './SignedOutNavigator';
+import RootNavigator from './RootNavigator';
 
 const DrawerSignedIn = createDrawerNavigator({
     Home: {

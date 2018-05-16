@@ -2,8 +2,7 @@ import { createSwitchNavigator } from 'react-navigation';
 import SignedOutNavigator from './SignedOutNavigator';
 import DrawerSignedIn from './DrawerSignedIn';
 
-const RootNavigator = (signedIn = false) => {
-    return createSwitchNavigator({
+const RootNavigator = createSwitchNavigator({
       SignedOutNavigator: {
           screen: SignedOutNavigator
         },
@@ -12,9 +11,8 @@ const RootNavigator = (signedIn = false) => {
         }
       },
       {
-        initialRouteName: signedIn ? "DrawerSignedIn" : "SignedOutNavigator"
+        initialRouteName: "SignedOutNavigator"
       }
-    );
-} 
+    ); 
 
   export default RootNavigator;

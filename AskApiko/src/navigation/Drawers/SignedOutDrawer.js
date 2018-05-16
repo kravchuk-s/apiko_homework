@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, StyleSheet, Text } from 'react-native';
 import { DrawerItems, SafeAreaView } from 'react-navigation';
 import Logo from '../../components/Logo/Logo';
 import { Ionicons } from '@expo/vector-icons';
+
+//TODO: add separator before SignUpDraweItem
 
 const CustomDrawerContentComponent = (props) => {
     return (
@@ -10,18 +12,18 @@ const CustomDrawerContentComponent = (props) => {
           <SafeAreaView
             style={{flex: 1}}
             forceInset={{ top: 'always', horizontal: 'never' }}          >
-            <Logo borderBottom />            
-              <DrawerItems {...props} style={{color: '#000000'}} 
+            <Logo borderBottom />              
+              <DrawerItems {...props}
+              itemStyle={{ borderTopWidth: StyleSheet.hairlineWidth, borderTopColor:'#f1f1f1'}}
               activeTintColor='#ffffff' 
               activeBackgroundColor='#F8981D' 
               inactiveTintColor='#000000' 
-              inactiveBackgroundColor='transparent'
-              iconContainerStyle = {<View style={{backgroundColor: '#000000'}}><Ionicons name="ios-menu" /></View>}              
-              />
-           
+              inactiveBackgroundColor='transparent'                       
+              />           
           </SafeAreaView>
         </ScrollView>    
       );
     };
 
 export default CustomDrawerContentComponent;
+
