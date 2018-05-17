@@ -2,12 +2,16 @@ import React from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
 
 import styles from './styles';
+import DrawerMenuButton from '../../components/DrawerMenuButton/DrawerMenuButton';
 
 class HomeScreen extends React.Component {
   
   static navigationOptions = ({ navigation }) => {
     return{
-      title: 'Home',     
+      title: 'Home',
+      headerLeft: (
+        <DrawerMenuButton onPress={ () => navigation.toggleDrawer() }/>           
+        )     
     }    
   };
 

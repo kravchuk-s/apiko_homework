@@ -1,11 +1,18 @@
 import React from 'react';
-import { WebView, Image } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { WebView } from 'react-native';
+import DrawerMenuButton from '../../components/DrawerMenuButton/DrawerMenuButton';
 
 class TermsAndConditions extends React.Component {
-  static navigationOptions = {
-    title: 'Terms & Conditions',    
-  }
+
+  static navigationOptions = ({ navigation }) => {
+    return{
+      title: 'Terms & Conditions',
+      headerLeft: (
+        <DrawerMenuButton onPress={ () => navigation.toggleDrawer() }/>           
+        )     
+    }    
+  };
+
   render() {
     return (      
         <WebView

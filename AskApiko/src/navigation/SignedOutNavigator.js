@@ -1,14 +1,11 @@
+import React from 'react';
 import { createDrawerNavigator } from 'react-navigation';
 import HomeNavigator from './HomeNavigator';
-import HomeScreen from '../screens/HomeScreen/HomeScreenView';
 import AboutUs from './AboutUsNavigator';
-import TermsAndConditions from '../screens/TermsAndConditionsScreen/TermsAndConditionScreenView';
-import SignUp from '../screens/SignUpScreen/SignUpScreenView';
+import TermsAndConditions from './TermsAndConditionsNavigator';
 import SignUpNavigator from './SignUpNavigator';
-import SignedOutDrawer from './Drawers/SignedOutDrawer';
+import CustomDrawerContentComponent from './Drawers/CustomDrawerContentComponent';
 import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
-
 
 const SignedOutNavigator = createDrawerNavigator({
     Home: {
@@ -20,7 +17,7 @@ const SignedOutNavigator = createDrawerNavigator({
             size={28}
             name="md-home"
             />
-          )
+          ),        
       }),
     },
     AboutUs: {
@@ -61,7 +58,7 @@ const SignedOutNavigator = createDrawerNavigator({
           }),
     }
   },{
-    contentComponent: SignedOutDrawer
+    contentComponent: CustomDrawerContentComponent
 });
 
   export default SignedOutNavigator;

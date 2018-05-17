@@ -4,7 +4,7 @@ import RootNavigator from './src/navigation/RootNavigator';
 
 export default class App extends React.Component {
   render() {
-    const Layout = RootNavigator;
+    const Layout = RootNavigator(true);
     return <Layout/>;
   }
 }

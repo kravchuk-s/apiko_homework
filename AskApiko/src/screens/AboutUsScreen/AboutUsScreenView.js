@@ -1,16 +1,15 @@
 import React from 'react';
-import { Touchable, WebView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { WebView } from 'react-native';
+import DrawerMenuButton from '../../components/DrawerMenuButton/DrawerMenuButton';
 
 class AboutUs extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     return{
       title: 'About us',
-      //TODO
-      // header: (
-      // <Touchable onPress={() => navigation.toggleDrawer()} />                    
-      // ),
+      headerLeft: (
+        <DrawerMenuButton onPress={ () => navigation.toggleDrawer() }/>           
+        )        
     }    
   };
 

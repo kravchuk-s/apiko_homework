@@ -8,7 +8,7 @@ class SignUp extends React.Component {
     return (
       <View style={styles.container}>
       <Text>Sign In Screen</Text>
-      <TouchableHighlight onPress={() => this.props.navigation.navigate('DrawerSignedIn')} underlayColor="white">
+      <TouchableHighlight onPress={() => this.props.navigation.navigate('SignedInNavigator')} underlayColor="white">
                   <View style={styles.button}>
                     <Text style={styles.buttonText}>Sign In</Text>
                   </View>
