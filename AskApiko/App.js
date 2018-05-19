@@ -1,10 +1,3 @@
-import React from 'react';
-import { Text, View } from 'react-native';
-import RootNavigator from './src/navigation/RootNavigator';
+import App from "./src";
+export default App;
 
-export default class App extends React.Component {
-  render() {
-    const Layout = RootNavigator(true);
-    return <Layout/>;
-  }
-}

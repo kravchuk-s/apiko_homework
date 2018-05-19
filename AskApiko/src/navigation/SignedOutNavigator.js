@@ -58,7 +58,8 @@ const SignedOutNavigator = createDrawerNavigator({
           }),
     }
   },{
-    contentComponent: CustomDrawerContentComponent
+    contentComponent: CustomDrawerContentComponent,
+    initialRouteName: "Home"
 });
 
   export default SignedOutNavigator;

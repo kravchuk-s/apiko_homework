@@ -2,7 +2,7 @@ import { createSwitchNavigator } from 'react-navigation';
 import SignedOutNavigator from './SignedOutNavigator';
 import SignedInNavigator from './SignedInNavigator';
 
-const RootNavigator = (signedIn = true) => {
+const RootNavigator = (signedIn = false) => {
   return createSwitchNavigator({
       SignedOutNavigator: {
           screen: SignedOutNavigator

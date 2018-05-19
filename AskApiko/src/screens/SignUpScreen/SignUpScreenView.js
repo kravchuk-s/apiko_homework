@@ -17,11 +17,13 @@ class SignUp extends React.Component {
     return (
       <View style={styles.container}>
       <Text>Sign Up</Text>
-        <TouchableHighlight onPress={() => this.props.navigation.navigate('SignIn')} underlayColor="white">
+        <TouchableHighlight 
+        onPress={() => this.props.navigation.navigate('SignIn')} 
+        underlayColor="white">
                   <View style={styles.button}>
                     <Text style={styles.buttonText}>Sign In</Text>
                   </View>
-                </TouchableHighlight>
+        </TouchableHighlight>
       </View>
     );
   }

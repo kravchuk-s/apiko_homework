@@ -16,6 +16,12 @@ const styles = StyleSheet.create({
     padding: 20,
     color: 'white'
   },
+  textInput : {
+    height: 40, 
+    alignSelf: 'stretch', 
+    marginLeft: 20, 
+    marginRight: 20
+  }
 });
 
 export default styles;

@@ -9,7 +9,8 @@ const DrawerMenuButton = ({
 }) => (
     <TouchableHighlight 
     style={{marginLeft: 16}} 
-    onPress={onPress}    
+    onPress={onPress}
+    underlayColor="transparent"    
     > 
         <Ionicons
         color={colors.mainOrange}
