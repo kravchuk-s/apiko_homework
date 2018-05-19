@@ -2,9 +2,18 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    display: 'flex',    
+    flexDirection: 'column',    
+    justifyContent: 'space-between',        
+  },
+  firstChild:{
+    flex: 2,
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+  secondChild: {
+    flex: 1,
+    justifyContent: 'space-between', 
+    alignItems: 'center',  
   },
   button: {
     marginTop: 20,

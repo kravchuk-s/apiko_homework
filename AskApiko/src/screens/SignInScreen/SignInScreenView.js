@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, TextInput, Alert } from 'react-native';
-import { Card, Button, FormLabel, FormInput } from "react-native-elements";
+import { View, Text, TouchableHighlight, TextInput, Alert, ScrollView, KeyboardAvoidingView  } from 'react-native';
 import { onSignIn } from "../../modules/auth/auth";
 import styles from './styles';
+import globalStyles from '../../styles/styles';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -12,6 +12,7 @@ class SignIn extends React.Component {
   }
 
   render() {
+
      //TODO: тимчасовий костиль
     _checkIsUserCorrect = () => {
       const { username, password } = this.state;
@@ -26,32 +27,55 @@ class SignIn extends React.Component {
         )
       }
     }
+    
     return (
-      <View style={styles.container}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="username"
-          onChangeText={(text) => this.setState({username: text})}          
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder="password"
-          onChangeText={(text) => this.setState({password: text})}            
-        />
-        <TouchableHighlight 
-        onPress={() => _checkIsUserCorrect()}
-        underlayColor="transparent">
-                  <View style={styles.button}>
-                    <Text style={styles.buttonText}>Sign In</Text>
-                  </View>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={() => this.props.navigation.navigate('RestorePassword')} 
-        underlayColor="white">
-                  <View style={styles.button}>
-                    <Text style={styles.buttonText}>Restore Password</Text>
-                  </View>
-        </TouchableHighlight>  
-      </View>
+
+      <ScrollView> 
+
+            <View style={styles.firstChild}>
+              
+              <Text style={globalStyles.signText}>Sign In</Text>
+
+              <View style={globalStyles.textInputContainer}>
+                <TextInput
+                  style={globalStyles.textInput}
+                  placeholder="username"
+                  onChangeText={(text) => this.setState({username: text})} 
+                  underlineColorAndroid="transparent"         
+                />
+              </View>
+
+              <View style={globalStyles.textInputContainer}>
+                <TextInput
+                  style={globalStyles.textInput}
+                  placeholder="password"
+                  onChangeText={(text) => this.setState({password: text})}
+                  underlineColorAndroid="transparent"
+                  secureTextEntry={true}
+                  multiline={false}              
+                />
+              </View>        
+
+              <TouchableHighlight onPress={() => this.props.navigation.navigate('RestorePassword')} 
+              underlayColor="white">                  
+                      <Text style={globalStyles.linkText}>Forgot your password?</Text>                  
+              </TouchableHighlight>
+
+            </View>
+
+            <View style={styles.secondChild}>
+
+              <TouchableHighlight 
+              onPress={() => _checkIsUserCorrect()}
+              underlayColor="transparent">
+                        <View style={globalStyles.signButton}>
+                          <Text style={globalStyles.buttonText}>Sign In</Text>
+                        </View>
+              </TouchableHighlight>  
+
+            </View>
+
+      </ScrollView>
     );
   }
 }

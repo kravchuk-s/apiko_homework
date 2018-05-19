@@ -1,27 +1,33 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../styles/colors';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  // container: {
+  //   display: 'flex',    
+  //   flexDirection: 'column',    
+  //   justifyContent: 'space-between',        
+  // },
+  // contentContainer: {
+  //   display: 'flex',    
+  //   flexDirection: 'column',  
+  //   justifyContent: 'space-between', 
+  // },
+  firstChild:{
+    flex: 2,
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+  secondChild: {
+    flex: 1,
+    justifyContent: 'space-between', 
+    alignItems: 'center',  
   },
   button: {
     marginTop: 20,
     width: 260,
     alignItems: 'center',
-    backgroundColor: 'blue'
+    
   },
-  buttonText: {
-    padding: 20,
-    color: 'white'
-  },
-  textInput : {
-    height: 40, 
-    alignSelf: 'stretch', 
-    marginLeft: 20, 
-    marginRight: 20
-  }
+   
 });
 
 export default styles;
