@@ -2,18 +2,17 @@ import React from 'react';
 import { createDrawerNavigator } from 'react-navigation';
 import { TouchableHighlight, Alert, Text } from 'react-native';
 
-import ProfileScreen from '../screens/ProfileScreen/ProfileScreenView';
 import HomeNavigator from './HomeNavigator';
 import AboutUs from './AboutUsNavigator';
 import TermsAndConditions from './TermsAndConditionsNavigator';
-import CreateQuestion from '../screens/CreateQuestionScreen/CreateQuestionScreenView';
-import Search from '../screens/SearchScreen/SearchScreenView';
+import ProfileScreen from './ProfileNavigator';
+import CreateQuestion from './CreateQuestionNavigator';
+import Search from './SearchNavigator';
 import SignedOutNavigator from './SignedOutNavigator';
 
 import CustomDrawerContentComponent from './Drawers/CustomDrawerContentComponent';
 import { Ionicons } from '@expo/vector-icons';
 
-import SignOutItem from '../components/SignOut/SignOutItem'
 import { onSignOut } from '../modules/auth/auth';
 
 const DrawerSignedIn = createDrawerNavigator({

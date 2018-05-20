@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   signText: {
     display: 'flex',
-    fontSize: 40,
+    fontSize: 35,
     fontWeight: 'bold',
     color: colors.black,
     alignSelf: 'flex-start',
@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
     width: 260,
     borderRadius: 5,
     justifyContent: 'center',
-    alignItems: 'center',         
+    alignItems: 'center',
+    marginBottom: 36,         
   },
   linkText: {
     padding: 20,

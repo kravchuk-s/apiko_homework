@@ -7,10 +7,11 @@ import globalStyles from '../../styles/styles';
 class SignUp extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return{
-      title: 'Sign Up',
+      
       headerLeft: (
         <DrawerMenuButton onPress={ () => navigation.toggleDrawer() }/>           
-        )     
+        ) ,
+        headerStyle: {backgroundColor: 'transparent'}    
     }    
   };
   

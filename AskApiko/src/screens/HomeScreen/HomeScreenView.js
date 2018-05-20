@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
-
 import styles from './styles';
 import DrawerMenuButton from '../../components/DrawerMenuButton/DrawerMenuButton';
 
@@ -11,7 +10,9 @@ class HomeScreen extends React.Component {
       title: 'Home',
       headerLeft: (
         <DrawerMenuButton onPress={ () => navigation.toggleDrawer() }/>           
-        )     
+        ) ,
+        
+            
     }    
   };
 

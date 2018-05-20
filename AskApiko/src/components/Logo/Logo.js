@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import styles from './styles';
-import logo from './logo.png';
+import logo from '../../assets/logo.png';
 
 const Logo = ({
   borderBottom,

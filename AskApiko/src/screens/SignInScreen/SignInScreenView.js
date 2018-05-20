@@ -3,6 +3,7 @@ import { View, Text, TouchableHighlight, TextInput, Alert, ScrollView, KeyboardA
 import { onSignIn } from "../../modules/auth/auth";
 import styles from './styles';
 import globalStyles from '../../styles/styles';
+import BackButton from '../../components/BackButton/BackButton';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -10,6 +11,13 @@ class SignIn extends React.Component {
     this.state = {username: '',
                   password: ''};
   }
+
+  static navigationOptions = ({ navigation }) => {
+    return{   
+        headerStyle: {backgroundColor: 'transparent'},
+        headerBackImage: (<BackButton/>),   
+    }    
+  };
 
   render() {
 

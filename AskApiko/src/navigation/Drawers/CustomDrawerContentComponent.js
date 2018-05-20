@@ -15,7 +15,7 @@ const CustomDrawerContentComponent = (props) => {
             forceInset={{ top: 'always', horizontal: 'never' }}          >
             <Logo borderBottom />              
               <DrawerItems {...props}
-              itemStyle={{ borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: colors.separator}}
+              // itemStyle={{ borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: colors.separator}}
               activeTintColor={colors.white} 
               activeBackgroundColor={colors.mainOrange} 
               inactiveTintColor={colors.black} 
