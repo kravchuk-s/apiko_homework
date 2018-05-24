@@ -1,16 +1,20 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import DrawerMenuButton from '../../components/DrawerMenuButton/DrawerMenuButton';
+import HeaderImage from '../../components/HeaderImage/HeaderImage';
 import styles from './styles';
 
 class ProfileScreen extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     return{
-      title: 'Profile',
       headerLeft: (
         <DrawerMenuButton onPress={ () => navigation.toggleDrawer() }/>           
-        ),        
+        ),
+      headerTitle: (        
+        <HeaderImage/>       
+      ),
+      headerRight: <View />,          
     }    
   };
 

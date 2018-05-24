@@ -1,19 +1,20 @@
 import React from 'react';
 import { createDrawerNavigator } from 'react-navigation';
-import HomeNavigator from './HomeNavigator';
+import Home from './HomeNavigator';
 import AboutUs from './AboutUsNavigator';
 import TermsAndConditions from './TermsAndConditionsNavigator';
 import SignUpNavigator from './SignUpNavigator';
 import CustomDrawerContentComponent from './Drawers/CustomDrawerContentComponent';
 import { Ionicons } from '@expo/vector-icons';
+import colors from '../styles/colors';
 
 const SignedOutNavigator = createDrawerNavigator({
     Home: {
-      screen: HomeNavigator,
+      screen: Home,
       navigationOptions: ({ navigation }) => ({
         drawerIcon: (
             <Ionicons
-            color={navigation.isFocused() ? '#ffffff':'#000000'}
+            color={navigation.isFocused() ? colors.white : colors.black}
             size={28}
             name="md-home"
             />
@@ -25,7 +26,7 @@ const SignedOutNavigator = createDrawerNavigator({
         navigationOptions: ({ navigation }) => ({
             drawerIcon: (
                 <Ionicons
-                color={navigation.isFocused() ? '#ffffff':'#000000'}
+                color={navigation.isFocused() ? colors.white : colors.black}
                 size={28}
                 name="md-information-circle"
                 />
@@ -38,7 +39,7 @@ const SignedOutNavigator = createDrawerNavigator({
         navigationOptions: ({ navigation }) => ({
             drawerIcon: (
                 <Ionicons
-                color={navigation.isFocused() ? '#ffffff':'#000000'}
+                color={navigation.isFocused() ? colors.white : colors.black}
                 size={28}
                 name="md-document"
                 />
@@ -50,7 +51,7 @@ const SignedOutNavigator = createDrawerNavigator({
         navigationOptions: ({ navigation }) => ({
             drawerIcon: (
                 <Ionicons
-                color={navigation.isFocused() ? '#ffffff':'#000000'}
+                color={navigation.isFocused() ? colors.white : colors.black}
                 size={28}
                 name="md-log-in"
                 />

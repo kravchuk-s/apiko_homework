@@ -2,26 +2,27 @@ import React from 'react';
 import { createDrawerNavigator } from 'react-navigation';
 import { TouchableHighlight, Alert, Text } from 'react-native';
 
-import HomeNavigator from './HomeNavigator';
+import Home from './HomeNavigator';
 import AboutUs from './AboutUsNavigator';
 import TermsAndConditions from './TermsAndConditionsNavigator';
-import ProfileScreen from './ProfileNavigator';
+import Profile from './ProfileNavigator';
 import CreateQuestion from './CreateQuestionNavigator';
 import Search from './SearchNavigator';
 import SignedOutNavigator from './SignedOutNavigator';
 
 import CustomDrawerContentComponent from './Drawers/CustomDrawerContentComponent';
 import { Ionicons } from '@expo/vector-icons';
+import colors from '../styles/colors';
 
 import { onSignOut } from '../modules/auth/auth';
 
 const DrawerSignedIn = createDrawerNavigator({
     Home: {
-        screen: HomeNavigator,
+        screen: Home,
         navigationOptions: ({ navigation }) => ({
           drawerIcon: (
               <Ionicons
-              color={navigation.isFocused() ? '#ffffff':'#000000'}
+              color={navigation.isFocused() ? colors.white : colors.black}
               size={28}
               name="md-home"
               />
@@ -33,7 +34,7 @@ const DrawerSignedIn = createDrawerNavigator({
         navigationOptions: ({ navigation }) => ({
           drawerIcon: (
               <Ionicons
-              color={navigation.isFocused() ? '#ffffff':'#000000'}
+              color={navigation.isFocused() ? colors.white : colors.black}
               size={28}
               name="md-search"
               />
@@ -45,7 +46,7 @@ const DrawerSignedIn = createDrawerNavigator({
         navigationOptions: ({ navigation }) => ({
           drawerIcon: (
               <Ionicons
-              color={navigation.isFocused() ? '#ffffff':'#000000'}
+              color={navigation.isFocused() ? colors.white : colors.black}
               size={28}
               name="md-create"
               />
@@ -53,11 +54,11 @@ const DrawerSignedIn = createDrawerNavigator({
         }),
     },
     Profile: {
-        screen: ProfileScreen,
+        screen: Profile,
         navigationOptions: ({ navigation }) => ({
             drawerIcon: (
                 <Ionicons
-                color={navigation.isFocused() ? '#ffffff':'#000000'}
+                color={navigation.isFocused() ? colors.white : colors.black}
                 size={28}
                 name="md-person"
                 />
@@ -69,7 +70,7 @@ const DrawerSignedIn = createDrawerNavigator({
         navigationOptions: ({ navigation }) => ({
             drawerIcon: (
                 <Ionicons
-                color={navigation.isFocused() ? '#ffffff':'#000000'}
+                color={navigation.isFocused() ? colors.white : colors.black}
                 size={28}
                 name="md-information-circle"
                 />
@@ -81,7 +82,7 @@ const DrawerSignedIn = createDrawerNavigator({
             navigationOptions: ({ navigation }) => ({
                 drawerIcon: (
                     <Ionicons
-                    color={navigation.isFocused() ? '#ffffff':'#000000'}
+                    color={navigation.isFocused() ? colors.white : colors.black}
                     size={28}
                     name="md-document"
                     />
@@ -96,7 +97,7 @@ const DrawerSignedIn = createDrawerNavigator({
                     <TouchableHighlight
                     onPress={ () =>_showAlert(navigation)}>                
                         <Ionicons
-                        color={navigation.isFocused() ? '#ffffff':'#000000'}
+                        color={navigation.isFocused() ? colors.white : colors.black}
                         size={28}
                         name="md-log-out"
                         />

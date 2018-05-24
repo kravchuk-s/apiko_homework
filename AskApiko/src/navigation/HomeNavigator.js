@@ -1,13 +1,13 @@
 import { createStackNavigator } from 'react-navigation';
-import HomeScreen from '../screens/HomeScreen/HomeScreenView';
-import QuestionScreen from '../screens/QuestionScreen/QuestionScreenView';
+import Home from '../screens/HomeScreen/HomeScreenView';
+import Question from '../screens/QuestionScreen/QuestionScreenView';
 
 const HomeNavigator = createStackNavigator({
     Home: {
-      screen: HomeScreen
+      screen: Home
     },
     Question: {
-        screen: QuestionScreen
+        screen: Question
     }
   });
 
