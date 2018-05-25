@@ -3,8 +3,11 @@ import Search from '../screens/SearchScreen/SearchScreenView';
 
 const SearchNavigator = createStackNavigator({    
     Search: {
-        screen: Search       
-    }
+        screen: Search,              
+    }, 
+},
+{
+    headerMode: 'screen',
 });
 
 export default SearchNavigator;

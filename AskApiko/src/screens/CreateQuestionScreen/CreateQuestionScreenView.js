@@ -3,6 +3,7 @@ import { View, Text, TextInput, KeyboardAvoidingView, ScrollView, TouchableHighl
 import DrawerMenuButton from '../../components/DrawerMenuButton/DrawerMenuButton';
 import styles from './styles';
 import colors from '../../styles/colors';
+import globalStyles from '../../styles/styles';
 import HeaderImage from '../../components/HeaderImage/HeaderImage';
 
 class CreateQuestion extends React.Component {
@@ -24,11 +25,11 @@ class CreateQuestion extends React.Component {
       headerTitle: (        
         <HeaderImage/>       
       ),
-      headerRight: <TouchableHighlight>
+      headerRight: (<TouchableHighlight>
                     <Text style={styles.sendButton}>
                       Send
                     </Text>
-                  </TouchableHighlight>,     
+      </TouchableHighlight>),     
     }    
   };
 
@@ -56,16 +57,23 @@ class CreateQuestion extends React.Component {
       }
     
     return (
+    
+
     <KeyboardAvoidingView 
       style={styles.container} 
       behavior="padding" 
       keyboardVerticalOffset={80}
     >
+      <View 
+      style={{height: 65, backgroundColor: colors.white, justifyContent: 'center'}}
+      >
+        <Text style={globalStyles.signText}>Create question</Text>
+      </View>
 
       <ScrollView contentContainerStyle={styles.scrollView}>
-          <View>        
+          <View>                   
             <TextInput
-            style={styles.inputField}
+            style={styles.inputFieldBold}
             multiline = {true}        
             placeholder="Question title…"
             onChangeText={(text) => this.setState({questionTitle: text})}

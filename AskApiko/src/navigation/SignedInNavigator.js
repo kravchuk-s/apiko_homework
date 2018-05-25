@@ -18,7 +18,7 @@ import { onSignOut } from '../modules/auth/auth';
 
 const DrawerSignedIn = createDrawerNavigator({
     Home: {
-        screen: Home,
+        screen: Home,        
         navigationOptions: ({ navigation }) => ({
           drawerIcon: (
               <Ionicons
@@ -42,15 +42,16 @@ const DrawerSignedIn = createDrawerNavigator({
         }),
     },
     CreateQuestion: {
-        screen: CreateQuestion,
+        screen: CreateQuestion,        
         navigationOptions: ({ navigation }) => ({
-          drawerIcon: (
+            drawerIcon: (
               <Ionicons
               color={navigation.isFocused() ? colors.white : colors.black}
               size={28}
               name="md-create"
               />
-            ),        
+            ),
+            title: "Create Question",                    
         }),
     },
     Profile: {
@@ -66,7 +67,7 @@ const DrawerSignedIn = createDrawerNavigator({
           }),
       },    
     AboutUs: {
-        screen: AboutUs,
+        screen: AboutUs,        
         navigationOptions: ({ navigation }) => ({
             drawerIcon: (
                 <Ionicons
@@ -74,11 +75,12 @@ const DrawerSignedIn = createDrawerNavigator({
                 size={28}
                 name="md-information-circle"
                 />
-              )
+            ),
+            title: "About Us",
           }),        
         },
     TermsAndConditions: {
-            screen: TermsAndConditions,
+            screen: TermsAndConditions,           
             navigationOptions: ({ navigation }) => ({
                 drawerIcon: (
                     <Ionicons
@@ -86,11 +88,12 @@ const DrawerSignedIn = createDrawerNavigator({
                     size={28}
                     name="md-document"
                     />
-                )
+                ),
+                title: "Terms & Conditions",
             }),
         },
     SignOut: {
-            screen: SignedOutNavigator,
+            screen: SignedOutNavigator,            
             navigationOptions: ({ navigation }) => ({
                 drawerIcon: (
                     //TODO: тимчасовий костиль
@@ -102,7 +105,8 @@ const DrawerSignedIn = createDrawerNavigator({
                         name="md-log-out"
                         />
                     </TouchableHighlight>                   
-                ),                
+                ), 
+                title: "Sign Out",               
             }),
         }    
     },{

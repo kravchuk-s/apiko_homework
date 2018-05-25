@@ -19,12 +19,16 @@ const styles = StyleSheet.create({
   inputField: {
     margin: 10
   },
+  inputFieldBold: {
+    margin: 10,
+    fontWeight: 'bold'
+  },
   bottomContainer: {
     backgroundColor: colors.white,              
     alignItems: 'flex-end',
     height: 40,
-    borderTopColor: colors.grey,
-    borderTopWidth: 1
+    // borderTopColor: colors.grey,
+    // borderTopWidth: 1
   },
   bottomText: {
     marginRight: 20, 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StatusBar } from 'react-native';
 import RootNavigator from './navigation/RootNavigator';
 import { isSignedIn } from "./modules/auth/auth";
 
@@ -21,7 +21,7 @@ export default class App extends React.Component {
       
   
     render() {
-
+        StatusBar.setBarStyle('dark-content', true);
         const { checkedSignIn, signedIn } = this.state;
 
         if (!checkedSignIn) {

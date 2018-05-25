@@ -24,6 +24,9 @@
     "react-native": "~0.55.2",
     "react-native-elements": "^0.19.1",
     "react-native-keyboard-aware-scroll-view": "^0.5.0",
+    "react-native-search-bar": "^3.4.1",
+    "react-native-search-header": "^0.2.6",
+    "react-native-searchbar": "^1.14.0",
     "react-navigation": "^2.0.1"
   }
 }
