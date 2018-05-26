@@ -3,7 +3,8 @@ import Profile from '../screens/ProfileScreen/ProfileScreenView';
 
 const ProfileNavigator = createStackNavigator({    
     Profile: {
-        screen: Profile       
+        screen: Profile,
+        headerMode: 'screen'       
     }
 });
 

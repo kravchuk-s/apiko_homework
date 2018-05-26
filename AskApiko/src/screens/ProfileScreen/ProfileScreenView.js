@@ -1,27 +1,32 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
 import DrawerMenuButton from '../../components/DrawerMenuButton/DrawerMenuButton';
 import HeaderImage from '../../components/HeaderImage/HeaderImage';
-import styles from './styles';
+import globalStyles from '../../styles/styles';
+
 
 class ProfileScreen extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     return{
-      headerLeft: (
-        <DrawerMenuButton onPress={ () => navigation.toggleDrawer() }/>           
-        ),
-      headerTitle: (        
-        <HeaderImage/>       
-      ),
-      headerRight: <View />,          
+      header: null         
     }    
   };
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Profile Screen</Text>
+      <View>
+        <View style = { globalStyles.containerHeaderBar }>
+          <View style = { globalStyles.statusHeaderBar }/>                         
+          <View style = { globalStyles.headerHeaderBar }>
+              <DrawerMenuButton 
+                onPress={ () => this.props.navigation.toggleDrawer() }
+              /> 
+              <HeaderImage/>                  
+              <View style={{width: 30}}/>{/* placeholder */}
+          </View>
+          <Text style={globalStyles.signText}>Profile</Text>                          
+        </View>
       </View>
     );
   }

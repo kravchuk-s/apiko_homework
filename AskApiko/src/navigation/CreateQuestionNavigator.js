@@ -4,10 +4,8 @@ import CreateQuestion from '../screens/CreateQuestionScreen/CreateQuestionScreen
 const CreateQuestionNavigator = createStackNavigator({    
     CreateQuestion: {
         screen: CreateQuestion,
-        navigationOptions: ({ navigation }) => ({
-            headerStyle: {                
-                elevation: 0
-            }                   
+        navigationOptions: ({ navigation }) => ({            
+            headerMode: 'screen'                   
         }),       
     }
 });

@@ -19,17 +19,7 @@ class CreateQuestion extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     return{      
-      headerLeft: (
-        <DrawerMenuButton onPress={ () => navigation.toggleDrawer() }/>           
-        ),
-      headerTitle: (        
-        <HeaderImage/>       
-      ),
-      headerRight: (<TouchableHighlight>
-                    <Text style={styles.sendButton}>
-                      Send
-                    </Text>
-      </TouchableHighlight>),     
+      header: null,     
     }    
   };
 
@@ -57,62 +47,79 @@ class CreateQuestion extends React.Component {
       }
     
     return (
-    
-
-    <KeyboardAvoidingView 
-      style={styles.container} 
-      behavior="padding" 
-      keyboardVerticalOffset={80}
-    >
-      <View 
-      style={{height: 65, backgroundColor: colors.white, justifyContent: 'center'}}
-      >
-        <Text style={globalStyles.signText}>Create question</Text>
-      </View>
-
-      <ScrollView contentContainerStyle={styles.scrollView}>
-          <View>                   
-            <TextInput
-            style={styles.inputFieldBold}
-            multiline = {true}        
-            placeholder="Question title…"
-            onChangeText={(text) => this.setState({questionTitle: text})}
-            underlineColorAndroid="transparent"
-            maxLength = {130}
-            onFocus = {() => this.setState({focused: 'questionTitle'})}
-            />
-
-            <TextInput
-            style={styles.inputField}
-            multiline = {true}          
-            placeholder="Type your question here…"
-            onChangeText={(text) => this.setState({questionText: text})}
-            underlineColorAndroid="transparent"
-            maxLength = {300}
-            onFocus = {() => this.setState({focused: 'questionText'})}
-            />
-
-            <TextInput
-            style={styles.inputField}
-            multiline = {true}          
-            placeholder="Tags separated by whitespace…"
-            onChangeText={(text) => this.setState({questionTags: text})}
-            underlineColorAndroid="transparent"
-            maxLength = {130}
-            onFocus = {() => this.setState({focused: 'questionTags'})}
-            />
-          </View>     
       
-      </ScrollView>
+            
 
-        <View
-          style={styles.bottomContainer}
-        >
-              <Text style={styles.bottomText}>
-                  {possibleChars - charLeft}
-              </Text>
-        </View>
-      </KeyboardAvoidingView>
+      <KeyboardAvoidingView 
+        style={styles.container} 
+        behavior="padding" 
+        keyboardVerticalOffset={80}
+      >
+
+        <View style = { globalStyles.containerHeaderBar }>
+          <View style = { globalStyles.statusHeaderBar }/>                         
+          <View style = { globalStyles.headerHeaderBar }>
+              <DrawerMenuButton 
+                onPress={ () => this.props.navigation.toggleDrawer() }
+              /> 
+              <HeaderImage/>                  
+              <TouchableHighlight>
+                <Text style={styles.sendButton}>
+                  Send
+                </Text>
+              </TouchableHighlight>
+          </View>
+          <Text style={globalStyles.signText}>Create question</Text>                          
+        </View> 
+
+        
+          
+        
+
+        <ScrollView contentContainerStyle={styles.scrollView}>
+            <View>                   
+              <TextInput
+              style={styles.inputFieldBold}
+              multiline = {true}        
+              placeholder="Question title…"
+              onChangeText={(text) => this.setState({questionTitle: text})}
+              underlineColorAndroid="transparent"
+              maxLength = {130}
+              onFocus = {() => this.setState({focused: 'questionTitle'})}
+              />
+
+              <TextInput
+              style={styles.inputField}
+              multiline = {true}          
+              placeholder="Type your question here…"
+              onChangeText={(text) => this.setState({questionText: text})}
+              underlineColorAndroid="transparent"
+              maxLength = {300}
+              onFocus = {() => this.setState({focused: 'questionText'})}
+              />
+
+              <TextInput
+              style={styles.inputField}
+              multiline = {true}          
+              placeholder="Tags separated by whitespace…"
+              onChangeText={(text) => this.setState({questionTags: text})}
+              underlineColorAndroid="transparent"
+              maxLength = {130}
+              onFocus = {() => this.setState({focused: 'questionTags'})}
+              />
+            </View>     
+        
+        </ScrollView>
+
+          <View
+            style={styles.bottomContainer}
+          >
+                <Text style={styles.bottomText}>
+                    {possibleChars - charLeft}
+                </Text>
+          </View>
+        </KeyboardAvoidingView>
+      
     );
   }
 }

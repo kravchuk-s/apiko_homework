@@ -23,25 +23,6 @@ const styles = StyleSheet.create({
       marginBottom: 6,
       backgroundColor: '#ffffff',
   },
-  label: {
-      flexGrow: 1,
-      fontSize: 20,
-      fontWeight: `600`,
-      textAlign: `left`,
-      marginVertical: 8,
-      paddingVertical: 3,
-      color: `#f5fcff`,
-      backgroundColor: `transparent`
-  },
-  button: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: 130,
-      height: 40,
-      marginTop: 40,
-      borderRadius: 2,
-      backgroundColor: `#ff5722`
-  }
 });
 
 export default styles;

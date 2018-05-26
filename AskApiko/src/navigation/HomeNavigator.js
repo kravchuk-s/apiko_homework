@@ -4,7 +4,8 @@ import Question from '../screens/QuestionScreen/QuestionScreenView';
 
 const HomeNavigator = createStackNavigator({
     Home: {
-      screen: Home
+      screen: Home,
+      headerMode: 'screen'
     },
     Question: {
         screen: Question

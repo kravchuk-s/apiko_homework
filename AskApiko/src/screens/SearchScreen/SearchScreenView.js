@@ -13,9 +13,10 @@ import HeaderImage from '../../components/HeaderImage/HeaderImage';
 import { Ionicons } from '@expo/vector-icons';
 import styles from './styles';
 import colors from '../../styles/colors';
+import globalStyles from '../../styles/styles';
 
 class SearchScreen extends React.Component {
-  
+
   static navigationOptions = ({ navigation }) => {
     return{
       header: null
@@ -24,9 +25,9 @@ class SearchScreen extends React.Component {
 
   render () {
       return (
-          <View style = { styles.container }>
-              <View style = { styles.status }/>                         
-              <View style = { styles.header }>
+          <View style = { globalStyles.containerHeaderBar }>
+              <View style = { globalStyles.statusHeaderBar }/>                         
+              <View style = { globalStyles.headerHeaderBar }>
                   <DrawerMenuButton 
                     onPress={ () => this.props.navigation.toggleDrawer() }
                   /> 
