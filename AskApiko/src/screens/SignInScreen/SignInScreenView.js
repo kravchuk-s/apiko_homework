@@ -1,15 +1,27 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, TextInput, Alert, ScrollView, KeyboardAvoidingView  } from 'react-native';
+import {
+  View, 
+  Text, 
+  TouchableHighlight, 
+  TextInput,
+  ScrollView,
+} from 'react-native';
 import { onSignIn } from "../../modules/auth/auth";
 import styles from './styles';
 import globalStyles from '../../styles/styles';
 import BackButton from '../../components/BackButton/BackButton';
+import PlaceholderApi from '../../modules/PlaceholderApi';
+import colors from '../../styles/colors';
+import ModalLoad from '../../components/ModalLoad';
 
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {username: '',
-                  password: ''};
+                  password: '',
+                  response: [],
+                  modalVisible: false,
+                };
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -19,26 +31,35 @@ class SignIn extends React.Component {
     }    
   };
 
+
+
   render() {
 
-     //TODO: тимчасовий костиль
-    _checkIsUserCorrect = () => {
-      const { username, password } = this.state;
-      if (this.state.username == 'Test' && this.state.username == 'Test'){
-        onSignIn(username, password).then(() => this.props.navigation.navigate('SignedInNavigator'))
-      } else {
-        Alert.alert(
-          'Error',
-          'Inccorect username or password',
-          [{text: 'OK', },],
-          { cancelable: false }
-        )
-      }
+    userSignIn = () => {
+
+      this.setState({modalVisible: true});
+      const { username, password } = this.state;      
+
+      PlaceholderApi.signIn(username, password)
+      .then((data) => {
+        this.setState({
+          response: data,
+          modalVisible: false                
+        });        
+
+        if(this.state.response.username == this.state.username){          
+          onSignIn();
+          this.props.navigation.navigate('SignedInNavigator');
+        }
+      })
+
     }
     
     return (
 
       <ScrollView> 
+            
+            <ModalLoad visability={this.state.modalVisible}/>
 
             <View style={styles.firstChild}>
               
@@ -74,7 +95,7 @@ class SignIn extends React.Component {
             <View style={styles.secondChild}>
 
               <TouchableHighlight 
-              onPress={() => _checkIsUserCorrect()}
+              onPress={() => userSignIn()}
               underlayColor="transparent">
                         <View style={globalStyles.signButton}>
                           <Text style={globalStyles.buttonText}>Sign In</Text>

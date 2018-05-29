@@ -26,6 +26,9 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'space-between',
     flexDirection: 'column',    
+  },
+  flexOne: {
+    flex: 1
   }
 });
 

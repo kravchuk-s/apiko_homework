@@ -7,20 +7,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  firstChild:{
-    flex: 2,
-    alignItems: 'center',
-  },
-  secondChild: {
+  modalWrapper: {
     flex: 1,
-    justifyContent: 'space-between', 
-    alignItems: 'center',  
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    backgroundColor: colors.grey, 
+    opacity: 0.3
   },
-  button: {
-    marginTop: 20,
-    width: 260,
-    alignItems: 'center',    
-  },
+  modalStyle: {
+    backgroundColor: colors.grey, 
+    opacity: 0.3
+  }
    
 });
 

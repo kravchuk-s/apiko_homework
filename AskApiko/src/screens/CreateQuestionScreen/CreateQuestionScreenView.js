@@ -1,10 +1,20 @@
 import React from 'react';
-import { View, Text, TextInput, KeyboardAvoidingView, ScrollView, TouchableHighlight } from 'react-native';
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  KeyboardAvoidingView, 
+  ScrollView, 
+  TouchableHighlight,
+  ToastAndroid 
+} from 'react-native';
 import DrawerMenuButton from '../../components/DrawerMenuButton/DrawerMenuButton';
 import styles from './styles';
 import colors from '../../styles/colors';
 import globalStyles from '../../styles/styles';
 import HeaderImage from '../../components/HeaderImage/HeaderImage';
+import ModalLoad from '../../components/ModalLoad';
+import PlaceholderApi from '../../modules/PlaceholderApi';
 
 class CreateQuestion extends React.Component {
   constructor(props){
@@ -13,7 +23,9 @@ class CreateQuestion extends React.Component {
       questionTitle: '',
       questionText: '',
       questionTags: '',
-      focused: 'questionTitle',      
+      focused: 'questionTitle',
+      response: [],
+      modalVisible: false,      
     };
   }
 
@@ -21,40 +33,57 @@ class CreateQuestion extends React.Component {
     return{      
       header: null,     
     }    
-  };
-
-  
+  }; 
 
   render() {
     
     let charLeft = 0;
     let possibleChars = 0;
-      switch (this.state.focused) {
-        case 'questionTitle':
-        charLeft = this.state.questionTitle.length;
-        possibleChars = 130;
-        break;
-        case 'questionText':
-        charLeft = this.state.questionText.length;
-        possibleChars = 300;
-        break;
-        case 'questionTags':
-        charLeft = this.state.questionTags.length;
-        possibleChars = 130;
-        break;
-        default:
-        break;
-      }
+
+    switch (this.state.focused) {
+      case 'questionTitle':
+      charLeft = this.state.questionTitle.length;
+      possibleChars = 130;
+      break;
+      case 'questionText':
+      charLeft = this.state.questionText.length;
+      possibleChars = 300;
+      break;
+      case 'questionTags':
+      charLeft = this.state.questionTags.length;
+      possibleChars = 130;
+      break;
+      default:
+      break;
+    }
+
+    createQuestion = () => {
+      this.setState({modalVisible: true});
+      const { questionTitle, questionText } = this.state;      
+
+      PlaceholderApi.createQuestion(questionTitle, questionText)
+      .then((data) => {
+        this.setState({
+          response: data,
+          modalVisible: false                
+        });        
+
+        if(this.state.response.title == this.state.questionTitle){          
+          ToastAndroid.show('Question created.', ToastAndroid.SHORT);
+          this.props.navigation.navigate('Home');
+        }
+      })
+    }
     
-    return (
-      
-            
+    return (    
 
       <KeyboardAvoidingView 
         style={styles.container} 
         behavior="padding" 
-        keyboardVerticalOffset={80}
+        keyboardVerticalOffset={0}
       >
+
+        <ModalLoad visability={this.state.modalVisible}/>
 
         <View style = { globalStyles.containerHeaderBar }>
           <View style = { globalStyles.statusHeaderBar }/>                         
@@ -63,18 +92,16 @@ class CreateQuestion extends React.Component {
                 onPress={ () => this.props.navigation.toggleDrawer() }
               /> 
               <HeaderImage/>                  
-              <TouchableHighlight>
+              <TouchableHighlight
+              onPress={() => createQuestion()}
+              >
                 <Text style={styles.sendButton}>
                   Send
                 </Text>
               </TouchableHighlight>
           </View>
           <Text style={globalStyles.signText}>Create question</Text>                          
-        </View> 
-
-        
-          
-        
+        </View>     
 
         <ScrollView contentContainerStyle={styles.scrollView}>
             <View>                   
@@ -111,9 +138,7 @@ class CreateQuestion extends React.Component {
         
         </ScrollView>
 
-          <View
-            style={styles.bottomContainer}
-          >
+          <View style={styles.bottomContainer}>
                 <Text style={styles.bottomText}>
                     {possibleChars - charLeft}
                 </Text>

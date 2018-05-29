@@ -1,23 +1,68 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, TextInput, Alert, ScrollView, KeyboardAvoidingView  } from 'react-native';
+import { 
+  View, 
+  Text, 
+  TouchableHighlight, 
+  TextInput,
+  ScrollView,  
+} from 'react-native';
 import DrawerMenuButton from '../../components/DrawerMenuButton/DrawerMenuButton';
 import styles from './styles';
+import colors from '../../styles/colors';
 import globalStyles from '../../styles/styles';
+import { onSignIn } from "../../modules/auth/auth";
+import PlaceholderApi from '../../modules/PlaceholderApi';
+import ModalLoad from '../../components/ModalLoad';
 
 class SignUp extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {username: '',
+                  email: '',
+                  password: '',
+                  response: [],
+                  modalVisible: false,
+                };
+  }
+
+
   static navigationOptions = ({ navigation }) => {
     return{
-      
       headerLeft: (
-        <DrawerMenuButton onPress={ () => navigation.toggleDrawer() }/>           
-        ) ,
-        headerStyle: {backgroundColor: 'transparent'}    
+      <DrawerMenuButton 
+      onPress={ () => navigation.toggleDrawer() }
+      />),
+      headerStyle: {backgroundColor: 'transparent'}    
     }    
   };
   
   render() {
+
+    userSignUp = () => {
+
+      this.setState({modalVisible: true});
+      const { username, email, password } = this.state;      
+
+      PlaceholderApi.signUp(username, email, password)
+      .then((data) => {
+        this.setState({
+          response: data,
+          modalVisible: false                
+        });        
+
+        if(this.state.response.username == this.state.username){          
+          onSignIn();
+          this.props.navigation.navigate('SignedInNavigator');
+        }
+      })
+
+    }
+
     return (
-      <ScrollView> 
+      <ScrollView>
+             
+              <ModalLoad visability={this.state.modalVisible}/>
 
             <View style={styles.firstChild}>
               
@@ -26,7 +71,8 @@ class SignUp extends React.Component {
               <View style={globalStyles.textInputContainer}>
                 <TextInput
                   style={globalStyles.textInput}
-                  placeholder="username"                  
+                  placeholder="username"
+                  onChangeText={(text) => this.setState({username: text})}                   
                   underlineColorAndroid="transparent"         
                 />
               </View>
@@ -34,7 +80,8 @@ class SignUp extends React.Component {
               <View style={globalStyles.textInputContainer}>
                 <TextInput
                   style={globalStyles.textInput}
-                  placeholder="email"                  
+                  placeholder="email"
+                  onChangeText={(text) => this.setState({email: text})}                   
                   underlineColorAndroid="transparent"            
                 />
               </View>
@@ -42,7 +89,8 @@ class SignUp extends React.Component {
               <View style={globalStyles.textInputContainer}>
                 <TextInput
                   style={globalStyles.textInput}
-                  placeholder="password"                  
+                  placeholder="password"
+                  onChangeText={(text) => this.setState({password: text})}                   
                   underlineColorAndroid="transparent"
                   secureTextEntry={true}
                   multiline={false}            
@@ -59,7 +107,7 @@ class SignUp extends React.Component {
             <View style={styles.secondChild}>
 
               <TouchableHighlight 
-              onPress={() => console.log("Sign up")}
+              onPress={() => userSignUp()}
               underlayColor="transparent">
                         <View style={globalStyles.signButton}>
                           <Text style={globalStyles.buttonText}>Sign Up</Text>

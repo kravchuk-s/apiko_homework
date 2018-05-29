@@ -1,13 +1,21 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, FlatList } from 'react-native';
+import { 
+  View, 
+  Text, 
+  TouchableHighlight, 
+  FlatList, 
+  ActivityIndicator 
+} from 'react-native';
 import DrawerMenuButton from '../../components/DrawerMenuButton/DrawerMenuButton';
 import HeaderImage from '../../components/HeaderImage/HeaderImage';
 import globalStyles from '../../styles/styles';
 import styles from './styles';
+import colors from '../../styles/colors';
 import data from '../../data/data';
 import ListItem from '../../components/ListItem/ListItem';
 import AskApikoApi from '../../modules/AskApikoApi';
 import PlaceholderApi from '../../modules/PlaceholderApi';
+import Header from './Components/Header';
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -17,7 +25,6 @@ class HomeScreen extends React.Component {
       isLoading: true
     }
   }
-
 
   static navigationOptions = ({ navigation }) => {
     return{      
@@ -32,49 +39,28 @@ class HomeScreen extends React.Component {
         posts: data,
         isLoading: false                
       });
-
     })
   }
 
-  render() {    
-    console.log(this.state.isLoading);
-    // let array = this.state.posts.map(JSON.parse);
-    
-      console.log("some try", this.state.posts[0]);
-    
-   
+  render() {
+
     if( this.state.isLoading ) {
       return(
-        <View>
-          <View style = { globalStyles.containerHeaderBar }>
-            <View style = { globalStyles.statusHeaderBar }/>                         
-            <View style = { globalStyles.headerHeaderBar }>
-                <DrawerMenuButton 
-                  onPress={ () => this.props.navigation.toggleDrawer() }
-                /> 
-                <HeaderImage/>                  
-                <View style={{width: 30}}/>{/* placeholder */}
-            </View>
-            <Text style={globalStyles.signText}>User questions</Text>                          
-          </View>
-          <Text>Loading...</Text>
+        <View style={styles.flexOne}>
+          <Header onPress={() => this.props.navigation.toggleDrawer()}/>
+         
+            <ActivityIndicator 
+            style={styles.container}         
+            size="large" 
+            color={colors.mainOrange} 
+            />
+          
         </View>
       )
     } else {
       return (
         <View>
-          <View style = { globalStyles.containerHeaderBar }>
-            <View style = { globalStyles.statusHeaderBar }/>                         
-            <View style = { globalStyles.headerHeaderBar }>
-                <DrawerMenuButton 
-                  onPress={ () => this.props.navigation.toggleDrawer() }
-                /> 
-                <HeaderImage/>                  
-                <View style={{width: 30}}/>{/* placeholder */}
-            </View>
-            <Text style={globalStyles.signText}>User questions</Text>                          
-          </View>
-          
+          <Header onPress={() => this.props.navigation.toggleDrawer()}/>          
           <FlatList
             data={this.state.posts}
             renderItem={({ item, i }) => (             
@@ -86,13 +72,11 @@ class HomeScreen extends React.Component {
                   postToShow={item}
                   />
               </TouchableHighlight>       
-            )}
-            keyExtractor={item => item.email}         
+            )}                    
           />        
         </View>
       );
-    }
-    
+    }    
   }
 }
 
