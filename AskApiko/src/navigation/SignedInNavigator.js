@@ -98,7 +98,9 @@ const DrawerSignedIn = createDrawerNavigator({
                 drawerIcon: (
                     //TODO: тимчасовий костиль
                     <TouchableHighlight
-                    onPress={ () =>_showAlert(navigation)}>                
+                    onPress={ () =>_showAlert(navigation)}
+                    underlayColor="transparent"
+                    >                
                         <Ionicons
                         color={navigation.isFocused() ? colors.white : colors.black}
                         size={28}

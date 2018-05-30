@@ -5,6 +5,7 @@ import {
   TouchableHighlight, 
   TextInput,
   ScrollView,
+  ToastAndroid
 } from 'react-native';
 import { onSignIn } from "../../modules/auth/auth";
 import styles from './styles';
@@ -35,22 +36,33 @@ class SignIn extends React.Component {
 
   render() {
 
+    //for login use 'username' & 'id' of user from jsonplaceholder.typicode.com/users
+
     userSignIn = () => {
 
       this.setState({modalVisible: true});
       const { username, password } = this.state;      
 
-      PlaceholderApi.signIn(username, password)
+      PlaceholderApi.signInReal(username, password)
       .then((data) => {
         this.setState({
           response: data,
           modalVisible: false                
-        });        
+        });
 
-        if(this.state.response.username == this.state.username){          
-          onSignIn();
+        if(this.state.response.username == this.state.username 
+          && this.state.response.id == this.state.password ){          
+          onSignIn(this.state.password);
           this.props.navigation.navigate('SignedInNavigator');
+        } else {
+          ToastAndroid.show('There is no such user', ToastAndroid.SHORT); 
         }
+      })
+      .catch((error) => {
+        this.setState({
+          modalVisible: false                
+        });
+        ToastAndroid.show('There is no such user', ToastAndroid.SHORT); 
       })
 
     }
@@ -86,7 +98,7 @@ class SignIn extends React.Component {
               </View>        
 
               <TouchableHighlight onPress={() => this.props.navigation.navigate('RestorePassword')} 
-              underlayColor="white">                  
+              underlayColor="transparent">                  
                       <Text style={globalStyles.linkText}>Forgot your password?</Text>                  
               </TouchableHighlight>
 

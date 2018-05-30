@@ -11,7 +11,6 @@ import HeaderImage from '../../components/HeaderImage/HeaderImage';
 import globalStyles from '../../styles/styles';
 import styles from './styles';
 import colors from '../../styles/colors';
-import data from '../../data/data';
 import ListItem from '../../components/ListItem/ListItem';
 import AskApikoApi from '../../modules/AskApikoApi';
 import PlaceholderApi from '../../modules/PlaceholderApi';
@@ -65,14 +64,17 @@ class HomeScreen extends React.Component {
             data={this.state.posts}
             renderItem={({ item, i }) => (             
               <TouchableHighlight 
-              onPress={() => this.props.navigation.navigate('Question')} 
-              underlayColor="white">
+              onPress={() => {
+                this.props.navigation.navigate('Question', {idOfPost: item.id})}
+              }
+              underlayColor="transparent">
                   <ListItem 
                   key={i} 
                   postToShow={item}
                   />
               </TouchableHighlight>       
-            )}                    
+            )}
+            keyExtractor={(item, index) => index}                    
           />        
         </View>
       );

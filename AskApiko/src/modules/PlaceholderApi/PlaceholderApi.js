@@ -33,8 +33,7 @@ class PlaceholderAPI {
         let response = await axios(requestUrl,options);
         const {status, data} = response;
         if(response){
-          this.clog(`RESPONSE STATUS ${status}`)
-          console.log('headers:', headers);
+          this.clog(`RESPONSE STATUS ${status}`)          
         }
         if(!(status !== 200 || status !==201)){
           this.clog(`ERROR`)
@@ -42,7 +41,7 @@ class PlaceholderAPI {
           return reject(data);
         }
         this.clog(`RESPONSE BODY`)
-        this.clog(`${JSON.stringify(data)}`);
+        // this.clog(`${JSON.stringify(data)}`);
 
         return resolve(data);
       } catch (error){
@@ -72,6 +71,14 @@ class PlaceholderAPI {
         username,
         password
       }     
+    });
+  }
+
+  signInReal( username, id ) {    
+    this.clog(`CALLING API sign-in ${JSON.stringify(arguments)}`);
+    return this.call({
+      url:`users/${id}`,
+      method: 'GET'          
     });
   }
 
@@ -145,6 +152,47 @@ class PlaceholderAPI {
     this.clog(`CALLING API sign-out ${JSON.stringify(arguments)}`);
     return this.call({
       url:`posts`,
+      method: 'GET'
+    });
+  }
+
+  getPost(id){    
+    this.clog(`CALLING API sign-out ${JSON.stringify(arguments)}`);
+    return this.call({
+      url:`posts/${id}`,
+      method: 'GET'
+    });
+  }
+
+  getComments(id){    
+    this.clog(`CALLING API sign-out ${JSON.stringify(arguments)}`);
+    return this.call({
+      url:`comments?postId=${id}`,
+      method: 'GET'
+    });
+  }
+
+  getUser(id){    
+    this.clog(`CALLING API sign-out ${JSON.stringify(arguments)}`);
+    return this.call({
+      url:`users/${id}`,
+      method: 'GET'
+    });
+  }
+
+  getUserPhoto(id){    
+    this.clog(`CALLING API sign-out ${JSON.stringify(arguments)}`);
+    return this.call({
+      url:`photos/${id}`,
+      method: 'GET'
+    });
+  }
+
+  getUserPosts(id){    
+    this.clog(`CALLING API sign-out ${JSON.stringify(arguments)}`);
+    this.clog("ID OF USER IN API: ", id);
+    return this.call({
+      url:`posts?userId=${id}`,
       method: 'GET'
     });
   }

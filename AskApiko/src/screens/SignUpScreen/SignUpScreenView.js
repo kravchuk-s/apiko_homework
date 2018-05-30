@@ -4,7 +4,8 @@ import {
   Text, 
   TouchableHighlight, 
   TextInput,
-  ScrollView,  
+  ScrollView,
+  ToastAndroid  
 } from 'react-native';
 import DrawerMenuButton from '../../components/DrawerMenuButton/DrawerMenuButton';
 import styles from './styles';
@@ -52,8 +53,8 @@ class SignUp extends React.Component {
         });        
 
         if(this.state.response.username == this.state.username){          
-          onSignIn();
-          this.props.navigation.navigate('SignedInNavigator');
+          ToastAndroid.show('User created', ToastAndroid.SHORT);
+          this.props.navigation.navigate('SignIn');
         }
       })
 
@@ -98,7 +99,7 @@ class SignUp extends React.Component {
               </View>         
 
               <TouchableHighlight onPress={() => this.props.navigation.navigate('SignIn')} 
-              underlayColor="white">                  
+              underlayColor="transparent">                  
                       <Text style={globalStyles.linkText}>Already has an account?</Text>                  
               </TouchableHighlight>
 
